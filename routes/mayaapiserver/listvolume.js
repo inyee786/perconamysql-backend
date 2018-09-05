@@ -12,20 +12,31 @@ var options = {
 
 http.get(options, function (err, resp, body) {
     if (err) {
-        //   reject(err);
-       
         console.log("this is volume erro namespaces ");
     } else {
         data = JSON.parse(body);
-        console.log(data);
-        //   numberOfrepo = JSON.parse(body).length;
-        console.log("this is volume lis http");
-        //    console.log(resp);
-        console.log("this is volume lis http");
-        res.status(200).json({ data });
+        console.log(JSON.stringify(data));
+        console.log("this is volume lis http");     
+    }    
+});
+
+var options = {
+    url: `http://${process.argv[5]}:5656/latest/volumes/`,
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'namespaces' : 'percona-jiva'
     }
-    // console.log(body +' this is body1')
-    
+};
+
+http.get(options, function (err, resp, body) {
+    if (err) {
+        console.log("this is volume erro namespaces ");
+    } else {
+        data = JSON.parse(body);
+        console.log(JSON.stringify(data));
+        console.log("this is volume lis http");     
+    }    
 });
 
 router.get('/volume', (req, res) => {
