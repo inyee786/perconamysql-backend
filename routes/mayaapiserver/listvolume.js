@@ -25,7 +25,7 @@ var options = {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json',
-        'namespaces' : 'percona-jiva'
+        'namespace' : 'percona-jiva'
     }
 };
 
