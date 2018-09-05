@@ -32,7 +32,7 @@ http.get(options, function (err, resp, body) {
                 capacity:data.items[i].metadata.annotations['vsm.openebs.io/volume-size'],
             });
         }
-
+        console.log(volumeStatus);
     }    
 });
 
