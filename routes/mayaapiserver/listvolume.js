@@ -25,7 +25,7 @@ http.get(options, function (err, resp, body) {
     }
 });
 
-app.get('/volume', (req, res) => {
+router.get('/volume', (req, res) => {
 
     var options = {
         url: `http://${process.argv[5]}:5656/latest/volumes/`,

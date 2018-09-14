@@ -5,10 +5,10 @@ const http = require('request');
 
 
 const databaseQuery = require('./routes/databasequery')
-const podStatus = require('./routes/kubernetes/kub');
-const sequenceDiagram = require('./routes/kubernetes/kubesequence');
+// const podStatus = require('./routes/kubernetes/kub');
+// const sequenceDiagram = require('./routes/kubernetes/kubesequence');
 const yaml = require('./routes/yaml');
-const mayaVolume = require('./routes/mayaapiserver/listvolume');
+// const mayaVolume = require('./routes/mayaapiserver/listvolume');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,8 +39,8 @@ http.get(options, function (err, resp, body) {
 
 
 app.use('/person',databaseQuery); 
-app.use('/pod',podStatus)
-app.use('/pods',sequenceDiagram) 
+// app.use('/pod',podStatus)
+// app.use('/pods',sequenceDiagram) 
 app.use('/workloads',yaml);
-app.use('/openebs',mayaVolume);
+// app.use('/openebs',mayaVolume);
 module.exports = app;
