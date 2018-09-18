@@ -75,14 +75,14 @@ router.get("/sequence", (request, response) => {
                     nodeName: res.body.items[i].spec.nodeName,
                     dockerImage:res.body.items[i].spec.containers[0].image,
                     node: pvcNodeDetails.nodes[res.body.items[i].spec.nodeName],
-                    adjacency:
-                      pvcNodeDetails.pvc.find(function(obj) {
-                        return (
-                          obj.name ===
-                          res.body.items[i].spec.volumes[0]
-                            .persistentVolumeClaim.claimName
-                        );
-                      }).volumeName + "-ctrl-"
+                    // adjacency:
+                    //   pvcNodeDetails.pvc.find(function(obj) {
+                    //     return (
+                    //       obj.name ===
+                    //       res.body.items[i].spec.volumes[0]
+                    //         .persistentVolumeClaim.claimName
+                    //     );
+                    //   }).volumeName + "-ctrl-"
                   });
                 } else if (
                   res.body.items[i].metadata.ownerReferences[0].kind ==
@@ -96,7 +96,7 @@ router.get("/sequence", (request, response) => {
                       kind: res.body.items[i].metadata.ownerReferences[0].kind,
                       name: res.body.items[i].metadata.name,
                       namespace: res.body.items[i].metadata.namespace,
-                      pvc: res.body.items[i].metadata.labels.pvc,
+                      pvc: res.body.items[i].metadata.labels['openebs.io/persistent-volume-claim'],
                       vsm: res.body.items[i].metadata.labels.vsm,
                       nodeName: res.body.items[i].spec.nodeName,
                       node:
@@ -112,7 +112,7 @@ router.get("/sequence", (request, response) => {
                       kind: res.body.items[i].metadata.ownerReferences[0].kind,
                       name: res.body.items[i].metadata.name,
                       namespace: res.body.items[i].metadata.namespace,
-                      pvc: res.body.items[i].metadata.labels.pvc,
+                      pvc: res.body.items[i].metadata.labels['openebs.io/persistent-volume-claim'],
                       vsm: res.body.items[i].metadata.labels.vsm,
                       nodeName: res.body.items[i].spec.nodeName,
                       node:
@@ -120,12 +120,12 @@ router.get("/sequence", (request, response) => {
                       status: res.body.items[i].status.phase,
                       openebsjivaversion:
                         res.body.items[i].spec.containers[0].image,
-                      adjacency:
-                        pvcNodeDetails.pvc.find(function(obj) {
-                          return (
-                            obj.name === res.body.items[i].metadata.labels.pvc
-                          );
-                        }).volumeName + "-rep-"
+                      // adjacency:
+                      //   pvcNodeDetails.pvc.find(function(obj) {
+                      //     return (
+                      //       obj.name === res.body.items[i].metadata.labels.pvc
+                      //     );
+                      //   }).volumeName + "-rep-"
                     });
                   } else {
                     podDetails.applicationPod.push({
