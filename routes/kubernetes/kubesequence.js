@@ -106,7 +106,7 @@ router.get("/sequence", (request, response) => {
                         res.body.items[i].spec.containers[0].image
                     });
                   } else if (
-                    res.body.items[i].metadata.name.includes("ctrl")
+                    res.body.items[i].metadata.name.includes("ctr")
                   ) {
                     podDetails.jivaController.push({
                       kind: res.body.items[i].metadata.ownerReferences[0].kind,
