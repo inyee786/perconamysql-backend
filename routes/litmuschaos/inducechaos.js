@@ -5,6 +5,8 @@ const networkDelay = require("./targetnetworkdelay");
 
 const Client = require('kubernetes-client').Client;
 const config = require('kubernetes-client').config;
+// const client = new Client({ config: config.getInCluster() });
+// await client.loadSpec();
 //Entrypoint main
 function initJob(app) {
   createJob(app, config, Client);
@@ -12,9 +14,9 @@ function initJob(app) {
 
 async function createJob(deploymentManifest, config, Client) {
   try {
-    // const client = new Client({ config: config.getInCluster() });
-    // await client.loadSpec();
-    const client = new Client({ config: config.fromKubeconfig(), version: '1.9' });
+    const client = new Client({ config: config.getInCluster() });
+    await client.loadSpec();
+    // const client = new Client({ config: config.fromKubeconfig(), version: '1.9' });
 
     const create = await client.apis.batch.v1
       .namespaces("litmus")
